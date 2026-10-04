@@ -73,6 +73,8 @@ Works on Windows, macOS and Linux. On Windows, terminals open in PowerShell.
 
 ## Quick tour
 
+Video walkthrough: [Watch the Çoban demo](https://youtu.be/N3-6S55cris)
+
 1. Click **Open demo agent**, type a task and press Enter.
 2. While it runs the sidebar shows **working**; when it asks a question the approval bar appears at the top.
 3. Close the browser tab and open it again: the screen is where you left it.
