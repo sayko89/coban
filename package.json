@@ -1,0 +1,26 @@
+{
+  "name": "coban",
+  "version": "0.1.0",
+  "description": "Çoban — a persistent terminal server and attention queue for coding agents",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "coban": "node bin/coban.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@homebridge/node-pty-prebuilt-multiarch": "^0.14.1",
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/headless": "^6.0.0",
+    "@xterm/xterm": "^6.0.0",
+    "express": "^4.21.2",
+    "nodemailer": "^10.0.14",
+    "ws": "^8.18.0"
+  },
+  "bin": {
+    "coban": "bin/coban.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "email": {
+    "user": "your.address@gmail.com",
+    "appPassword": "xxxx xxxx xxxx xxxx",
+    "to": "your.address@gmail.com"
+  },
+  "approval": {
+    "waitSeconds": 20
+  }
+}

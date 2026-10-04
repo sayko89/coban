@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Çoban</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="stylesheet" href="/vendor/xterm/css/xterm.css?v=20261004-1">
+<link rel="stylesheet" href="/style.css?v=20261004-1">
+</head>
+<body>
+
+<aside>
+  <div class="brand"><h1>🐑 Çoban</h1><small data-i18n="brand.tagline">your agent herd</small></div>
+  <div class="queue" id="queue"></div>
+
+  <ul class="nav" id="nav">
+    <li><button data-view="herd"><span data-i18n="nav.herd">Herd</span> <span class="count" id="navHerd"></span></button></li>
+    <li><button data-view="history"><span data-i18n="nav.history">History</span> <span class="count" id="navHistory"></span></button></li>
+    <li><button data-view="rules"><span data-i18n="nav.rules">Auto-approve</span> <span class="count" id="navRules"></span></button></li>
+    <li><button data-view="plugins"><span data-i18n="nav.plugins">Plugins</span> <span class="count" id="navPlugins"></span></button></li>
+  </ul>
+
+  <div class="section-title" data-i18n="side.workspaces">Workspaces</div>
+  <ul class="herd" id="herd"></ul>
+
+  <div class="actions">
+    <div class="settings-panel">
+      <div class="settings-label">Settings</div>
+      <button class="btn primary" id="newBtn" data-i18n="btn.newWorkspace">New workspace</button>
+      <button class="btn" id="demoBtn" data-i18n="btn.openDemo">Open demo agent</button>
+      <div class="side-row" id="mail"></div>
+      <div class="side-row" id="desk"></div>
+      <label class="side-row lang-row"><span data-i18n="side.language">Language</span>
+        <select id="langSelect" aria-label="Language"></select></label>
+    </div>
+  </div>
+</aside>
+
+<main>
+  <header>
+    <div class="title">
+      <h2 id="curName"></h2>
+      <div class="sub" id="curSub"></div>
+    </div>
+    <div class="tools" id="termTools" hidden>
+      <button class="btn" id="restartBtn" data-i18n="btn.restart">Restart</button>
+      <button class="btn danger" id="deleteBtn" data-i18n="btn.closeTab">Close tab</button>
+    </div>
+  </header>
+  <nav class="tabs" id="tabs" hidden></nav>
+
+  <div class="ask" id="ask" role="status">
+    <div class="q"><strong id="askTitle">Waiting for approval</strong><span id="askText"></span></div>
+    <div class="btns" id="askBtns">
+      <button class="btn primary" id="yesBtn">Approve</button>
+      <button class="btn" id="noBtn" data-i18n="btn.reject">Reject</button>
+    </div>
+  </div>
+  <div class="banner" id="banner" data-i18n="banner.lost">Lost connection to the server, reconnecting…</div>
+
+  <div id="terms" hidden></div>
+  <div id="page"></div>
+</main>
+
+<div id="toasts" aria-live="polite"></div>
+
+<dialog id="newDialog">
+  <form id="newForm" method="dialog">
+    <h3 id="newTitle">New workspace</h3>
+    <label for="fName"><span data-i18n="dlg.name">Name</span>
+      <span class="hint" data-i18n="dlg.nameHint"></span></label>
+    <input type="text" id="fName" placeholder="web-dashboard" autocomplete="off">
+    <label for="fWs"><span data-i18n="dlg.workspace">Workspace</span>
+      <span class="hint" data-i18n="dlg.workspaceHint"></span></label>
+    <input type="text" id="fWs" list="wsList" autocomplete="off">
+    <datalist id="wsList"></datalist>
+    <label for="fCwd"><span data-i18n="dlg.folder">Folder</span>
+      <span class="hint" data-i18n="dlg.folderHint"></span></label>
+    <input type="text" id="fCwd" class="mono" autocomplete="off">
+    <label for="fCmd"><span data-i18n="dlg.command">Start command</span>
+      <span class="hint" data-i18n="dlg.commandHint"></span></label>
+    <input type="text" id="fCmd" class="mono" autocomplete="off">
+    <p class="error" id="fError" role="alert"></p>
+    <div class="dialog-actions">
+      <button type="button" class="btn" id="cancelBtn" data-i18n="btn.cancel">Cancel</button>
+      <button type="submit" class="btn primary" id="newSubmit">Open workspace</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="/vendor/xterm/lib/xterm.js?v=20261004-1"></script>
+<script src="/vendor/addon-fit/lib/addon-fit.js?v=20261004-1"></script>
+<script src="/i18n.js?v=20261004-1"></script>
+<script src="/app.js?v=20261004-1"></script>
+</body>
+</html>
